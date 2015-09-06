@@ -1,5 +1,18 @@
-;In this little example pressing n will pop up a message
-;pressing Esc will leave.
+#cs
+Script to help restore Chromecast connection when dropped.
+
+Monitors colour of the chromecast button in Chrome browser for changes.  On change,
+it attempts to pause the video, reconnect the Chromecast with the TV, and then unpause video.
+
+HOW TO USE:
+
+Get your video/tab ready to play and chromecast ready to connect to tv
+Run script (F5)
+Hold mouse pointer over Chromecast button (should be in the top right corner of chrome browser)
+After 5 seconds, the script will start the chromecast and the video.
+If connection is lost, script will try to pause the video, reconnect the cast and unpause video.
+
+#ce
 
 
 
@@ -186,8 +199,6 @@ sleep(1000)
 
 ToolTip("")
 
-;MsgBox(0, 'Ready?', $chromeButtonPos[0] + ' ' + $chromeButtonPos[1])
-
 while 1
 
 	Local $GetAreaChecksumOne = PixelChecksum($chromeButtonPos[0]-10,$chromeButtonPos[1]-10, $chromeButtonPos[0]+10, $chromeButtonPos[1]+10)
@@ -215,25 +226,3 @@ while 1
 WEnd
 
 Exit
-
-
-
-
-
-
-
-
-
-
-
-
-MouseClick(800, 500) ; Pause video
-
-
-MouseMove(1116,-55)
-
-MouseClick(1116,-55)
-
-
-MsgBox(0,PixelChecksum(1116,-55, 0, 0), "Pixel changed colour")
-
